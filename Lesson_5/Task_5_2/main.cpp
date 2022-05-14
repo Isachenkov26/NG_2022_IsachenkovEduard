@@ -3,7 +3,7 @@
 using namespace std;
 
 void searchElement(int arr[], int num, int amount){
-    if(amount >= 1){
+    if(amount >= 0){
         if(num == arr[amount])
             cout << "Number " << num << " is present in array. It's index " << amount << endl;
     searchElement(arr, num, amount-1);
