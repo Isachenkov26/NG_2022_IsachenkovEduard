@@ -2,18 +2,20 @@
 
 using namespace std;
 
-void searchElement(int arr[], int num, int amount){
-    if(amount >= 0){
-        if(num == arr[amount])
-            cout << "Number " << num << " is present in array. It's index " << amount << endl;
-    searchElement(arr, num, amount-1);
+void searchElement(int arr[], int num, int length){
+    if(length >= 0){
+        if(num == arr[length])
+            cout << "Number " << num << " is present in array. It's index " << length << endl;
+    searchElement(arr, num, length-1);
     }
 }
 
 int main(){
-    int arr[] = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0}, num, amount = (sizeof(arr)/sizeof(int))-1;
+    int arr[] = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
+    int num, length = (sizeof(arr)/sizeof(int))-1;
     cout << "Enter your number: ";
     cin >> num;
-    searchElement(arr, num, amount);
+    cout << length << endl;
+    searchElement(arr, num, length);
     return 0;
 }
