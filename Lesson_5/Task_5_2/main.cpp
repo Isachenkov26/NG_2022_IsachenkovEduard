@@ -15,7 +15,6 @@ int main(){
     int num, length = (sizeof(arr)/sizeof(int))-1;
     cout << "Enter your number: ";
     cin >> num;
-    cout << length << endl;
     searchElement(arr, num, length);
     return 0;
 }
