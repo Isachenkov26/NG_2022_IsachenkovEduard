@@ -20,9 +20,9 @@ int main()
     for(int i = 0; i < 4; i++)
         cout << " " << secondArray[i];
 
-    for(int i = 0, j = 1000; i < 4; i++, j /= 10){
-            firstNum += firstArray[i] * j;
-            secondNum += secondArray[i] * j;
+    for(int i = 0; i < 4; i++){
+            firstNum += firstArray[sizeof(firstArray)/sizeof(int) - (i+1)] * pow(10, i);
+            secondNum += secondArray[sizeof(firstArray)/sizeof(int) - (i+1)] * pow(10, i);
     }
     if(firstNum > secondNum)
         cout << endl << firstNum << " > " << secondNum;
