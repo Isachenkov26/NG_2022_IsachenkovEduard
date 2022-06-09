@@ -13,7 +13,6 @@ void searchElement(int arr[], int num, int length){
 int main(){
     int arr[] = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
     int num, length = (sizeof(arr)/sizeof(int))-1;
-    cout << length << endl;
     cout << "Enter your number: ";
     cin >> num;
     searchElement(arr, num, length);
