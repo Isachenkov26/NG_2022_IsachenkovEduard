@@ -14,9 +14,7 @@ int main()
                 amount++;
             else if(str[i] ==  bigLetter){
                 for(char smallLetter = 'a'; smallLetter <= 'z'; smallLetter++){
-                    if(str[i+1] == smallLetter)
-                        amount++;
-                    else if(str[0] == smallLetter)
+                    if(str[i+1] == smallLetter || str[0] == smallLetter)
                         amount++;
                 }
             }
