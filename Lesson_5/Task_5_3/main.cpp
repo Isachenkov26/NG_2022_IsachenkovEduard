@@ -10,10 +10,7 @@ int check(char str[], int i){
          }
         else if(str[i] ==  bigLetter){
             for(char smallLetter = 'a'; smallLetter <= 'z'; smallLetter++){
-                if(str[i+1] == smallLetter){
-                    amount++;
-                }
-                if(str[0] == smallLetter){
+                if(str[i+1] == smallLetter || str[0] == smallLetter){
                     amount++;
                 }
             }
@@ -37,6 +34,6 @@ int main(){
     char str[100];
     cout << "Enter the string: ";
     cin.getline(str, 100);
-    cout << "result: " << checkZeroSymbol(str);
+    cout << str << " - " << checkZeroSymbol(str);
     return 0;
 }
