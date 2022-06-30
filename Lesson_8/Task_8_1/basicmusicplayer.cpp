@@ -49,11 +49,28 @@ void BasicMusicPlayer::Pause()
 
 void BasicMusicPlayer::FindSong()
 {
-    QStringList song = QFileDialog::getOpenFileNames(this, tr("Play Music"), QDir::homePath(),tr("music (*.mp3)"));
-    for(int i = 0; i < song.length(); i++){
-        mPlayList->addMedia(QUrl::fromLocalFile(song[i]));
-        ui->lPlaylist->addItem(song[i]);
-        ui->lineEdit->setText(song[i]);
+    QString path = QFileDialog::getExistingDirectory(this, tr("Play Music"), QDir::homePath());
+    QString name = "*.mp3";
+    QStringList filters;
+    filters << name;
+    QDir rootDir(path);
+    QFileInfoList list = rootDir.entryInfoList(filters);
+    for(int i = 0; i < list.count(); i++){
+        QFileInfo tmpFileInfo = list.at(i);
+        if(tmpFileInfo.isDir()){
+            QString fileName = tmpFileInfo.fileName();
+            QListWidgetItem *tmp = new QListWidgetItem(fileName);
+            ui->lPlaylist->addItem(tmp);
+            ui->lineEdit->setText(path + '/' + fileName);
+            mPlayList->addMedia(QUrl::fromLocalFile(path + '/' + fileName));
+        }
+        else if(tmpFileInfo.isFile()){
+            QString fileName = tmpFileInfo.fileName();
+            QListWidgetItem *tmp = new QListWidgetItem(fileName);
+            ui->lPlaylist->addItem(tmp);
+            ui->lineEdit->setText(path + '/' + fileName);
+            mPlayList->addMedia(QUrl::fromLocalFile(path + '/' + fileName));
+        }
     }
 }
 
