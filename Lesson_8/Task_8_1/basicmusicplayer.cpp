@@ -1,8 +1,6 @@
 #include "basicmusicplayer.h"
 #include "ui_basicmusicplayer.h"
 
-int index;
-
 BasicMusicPlayer::BasicMusicPlayer(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::BasicMusicPlayer)
@@ -59,15 +57,13 @@ void BasicMusicPlayer::FindSong()
         QFileInfo tmpFileInfo = list.at(i);
         if(tmpFileInfo.isDir()){
             QString fileName = tmpFileInfo.fileName();
-            QListWidgetItem *tmp = new QListWidgetItem(fileName);
-            ui->lPlaylist->addItem(tmp);
+            ui->lPlaylist->addItem(fileName);
             ui->lineEdit->setText(path + '/' + fileName);
             mPlayList->addMedia(QUrl::fromLocalFile(path + '/' + fileName));
         }
         else if(tmpFileInfo.isFile()){
             QString fileName = tmpFileInfo.fileName();
-            QListWidgetItem *tmp = new QListWidgetItem(fileName);
-            ui->lPlaylist->addItem(tmp);
+            ui->lPlaylist->addItem(fileName);
             ui->lineEdit->setText(path + '/' + fileName);
             mPlayList->addMedia(QUrl::fromLocalFile(path + '/' + fileName));
         }
@@ -86,6 +82,6 @@ void BasicMusicPlayer::Volume(int volume)
 
 void BasicMusicPlayer::ClickedMusic()
 {
-    index = ui->lPlaylist->currentRow();
+    int index = ui->lPlaylist->currentRow();
     mPlayList->setCurrentIndex(index);
 }
